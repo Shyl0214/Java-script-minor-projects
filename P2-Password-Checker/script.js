@@ -12,21 +12,26 @@ btn.addEventListener("click", function () {
     h2.style.color = "red";
   } else {
     h2.textContent = "";
-    // length
+
     if (password.length < 8) {
       h2.textContent = "Password is too short";
+      h2.style.color = "red";
     } else if (password.search(/[a-z]/) == -1) {
       h2.textContent = "Password is missing small case";
+      h2.style.color = "red";
     } else if (password.search(/[A-Z]/) == -1) {
       h2.textContent = "Password is missing captial case";
-    } else if (password.search(/[]/)) {
+      h2.style.color = "red";
+    } else if (
+      password.search(
+        /[!\@\#\$\%\^\&\*\(\)\-\_\=\+\{\}\[\]\:\;\"\'\<\>\,\.\?\/\\\|]/
+      ) == -1
+    ) {
+      h2.textContent = "Password is missing special character";
+      h2.style.color = "red";
     } else {
       h2.textContent = "Password is Strong";
       h2.style.color = "green";
     }
   }
-  // too short
-  // lower case
-  // upper case
-  // special character
 });
